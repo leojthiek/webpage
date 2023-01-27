@@ -1,0 +1,20 @@
+*{
+    background-color:rgb(42, 29, 55);
+   
+}
+.main{
+    color:white;
+    text-align: center;
+    margin-top: 30rem;
+}
+#btn{
+
+    color:white;
+    background-color:blue;
+    padding: .80rem 1rem;
+    border: none;
+    border-radius: 1.50rem;
+    text-decoration: none;
+
+    
+}

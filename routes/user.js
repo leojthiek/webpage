@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt=require('bcrypt')
+const bcrypt=require('bcrypt');
+const jwt=require('jsonwebtoken')
 const Customer = require("../middleware/schema");
 const { registerschema, loginschema } = require("../middleware/joi");
 
-router.get("/", (re, res) => {
-  res.send("router hello");
-});
+
 router.post("/register", async (req, res) => {
   try {
     const { error } = registerschema(req.body);
@@ -28,12 +27,35 @@ router.post("/register", async (req, res) => {
         password:hash
 
     })
-   user.save().then(data=>{
-    res.send(data)
-   })
+   user.save()
+   res.redirect('/login')
   } catch (error) {
     res.status(500).send(error)
   }
 });
+
+router.post('/login',async(req,res)=>{
+  try {
+  const {error}= loginschema(req.body);
+  if(error){
+    res.send(error.message)
+    return
+  }
+  const user=await Customer.findOne({email:req.body.email});
+  if(!user)return res.status(400).send('invalid email address')
+
+  const password=await bcrypt.compare(req.body.password,user.password);
+  if (!password)return res.status(400).send('incorrect password')
+
+  const token= jwt.sign({_id:user._id},process.env.SECRET_KEY);
+   res.cookie('jwt',token)
+  
+   res.redirect('/home')
+    
+  } catch (error) {
+    res.send(error)
+  }
+})
+router
 
 module.exports = router;
