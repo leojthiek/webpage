@@ -1,20 +1,33 @@
-*{
-    background-color:rgb(42, 29, 55);
+
+section{
+    background-image: url(img3.jpg);
+    background-size:cover;
+    background-repeat:no-repeat;
+    height: 500px;
    
-}
-.main{
-    color:white;
-    text-align: center;
-    margin-top: 30rem;
-}
-#btn{
+  }
+  #head{
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    padding-top: 15rem;
+  
+  
+  }
+  #btn{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 100px;
 
-    color:white;
-    background-color:blue;
-    padding: .80rem 1rem;
-    border: none;
-    border-radius: 1.50rem;
+  }
+  footer{
+    background-color: aquamarine;
+    margin-top: 2rem;
+  }
+  .footer{
+    list-style: none;
     text-decoration: none;
-
-    
-}
+  }
