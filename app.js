@@ -28,5 +28,5 @@ mongoose.set('strictQuery', false);
 mongoose.connect('mongodb://localhost:27017',()=>console.log('mongodb connected'))
 
 
-app.listen('1081',()=>console.log('server running'))
+app.listen('1082',()=>console.log('server running'))
 
