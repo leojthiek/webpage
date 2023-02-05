@@ -19,7 +19,7 @@ router.get('/login',(req,res)=>{
 router.get('/home',auth,(req,res)=>{
     res.render('home.ejs')
 })
-console.log('state')
+
 
 
 
